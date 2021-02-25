@@ -1,0 +1,7 @@
+.wrapper {
+  max-width: 700px;
+  margin: auto;
+  & user-data {
+    max-width: 700px;
+  }
+}

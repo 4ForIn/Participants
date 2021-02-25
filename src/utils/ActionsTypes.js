@@ -1,0 +1,11 @@
+export const ADD_NUMBER = 'ADD_NUMBER';
+export const DECREMENT = 'DECREMENT';
+export const INCREMENT = 'INCREMENT';
+export const IS_MODAL_OPEN = 'IS_MODAL_OPEN';
+export const IS_SIGN_IN_FORM = 'IS_SIGN_IN_FORM';
+export const SEND_QUANT = 'SEND_QUANT';
+export const SEND_SECRETARY = 'SEND_SECRETARY';
+export const SET_QUANTITY = 'SET_QUANTITY';
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';
+export const SIGN_UP = 'SIGN_UP';
