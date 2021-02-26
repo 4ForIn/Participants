@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <section className="hero is-small is-primary">
       <HeaderTitle />
-      <div className="is-flex is-align-content-left">
+      <div className="is-flex is-align-content-left ">
         <Menu />
         <HeaderInfo userName="Jarek" date="sunday 21 february" />
       </div>

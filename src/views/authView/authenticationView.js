@@ -1,5 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+/* eslint-disable no-console */
+
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FormInput from 'components/formInput/formInput';
@@ -7,21 +8,58 @@ import Button from 'components/button/primaryBtn';
 
 function AuthenticationView(props) {
   const { formType } = props;
+
+  const [inputValues, setInputValue] = useState({
+    congregation: '',
+    email: '',
+    name: '',
+    password: '',
+  });
+
+  function inputOnchange(event) {
+    setInputValue((prevState) => ({
+      ...prevState,
+      [event.target.id]: event.target.value,
+    }));
+  }
   return (
     <div className="column is-narrow">
       {formType === 'signup' && (
         <>
-          <FormInput id="name" labelText="Username:" placeholder="Name" type="text" />
+          <FormInput
+            id="name"
+            labelText="Username:"
+            onChange={inputOnchange}
+            placeholder="Name"
+            type="text"
+            value={inputValues.name}
+          />
           <FormInput
             id="congregation"
             labelText="Congregation:"
+            onChange={inputOnchange}
             placeholder="Congregation name"
             type="text"
+            value={inputValues.congregation}
           />
         </>
       )}
-      <FormInput id="email" labelText="Email:" placeholder="Email" type="text" />
-      <FormInput id="password" labelText="Password:" placeholder="Password" type="text" />
+      <FormInput
+        id="email"
+        labelText="Email:"
+        onChange={inputOnchange}
+        placeholder="Email"
+        type="email"
+        value={inputValues.email}
+      />
+      <FormInput
+        id="password"
+        labelText="Password:"
+        onChange={inputOnchange}
+        placeholder="Password"
+        type="password"
+        value={inputValues.password}
+      />
 
       <p className="control is-flex is-justify-content-space-evenly">
         <Button btnType="submit" color="button is-danger is-light">
