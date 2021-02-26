@@ -1,5 +1,5 @@
 const initialState = {
-  isSignedIn: true,
+  isSignedIn: false,
   name: '',
   zoomName: '',
   congregation: '',

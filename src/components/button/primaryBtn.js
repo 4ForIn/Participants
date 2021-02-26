@@ -12,7 +12,12 @@ export default function Button({ btnType, children, color }) {
 Button.propTypes = {
   btnType: PropTypes.string,
   children: PropTypes.element.isRequired,
-  color: PropTypes.oneOf(['button is-primary', 'button is-warning', 'button is-danger is-light']),
+  color: PropTypes.oneOf([
+    'button is-primary',
+    'button is-warning',
+    'button is-danger is-light',
+    'button is-success',
+  ]),
 };
 Button.defaultProps = {
   btnType: 'submit',

@@ -1,9 +1,13 @@
+import { getDateFn } from 'utils/getDateFn';
+import { VERSION } from 'utils/applicationVersion';
+
 const initialState = {
-  date: '',
+  date: getDateFn(), // [onlyNumbers, fullShortDate, fullLongDate]
   formType: 'signup',
   isAuth: true,
   isMenuOpen: false,
   isOtherNoVisible: true,
+  version: VERSION,
 };
 
 export default function appStateReducer(state = initialState, action) {
