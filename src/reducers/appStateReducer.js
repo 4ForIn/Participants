@@ -1,10 +1,10 @@
-import { getDateFn } from 'utils/getDateFn';
-import { VERSION } from 'utils/applicationVersion';
+import { getDateFn } from 'utils/GetDateFn';
+import { VERSION } from 'utils/ApplicationVersion';
 
 const initialState = {
-  date: getDateFn(), // [onlyNumbers, fullShortDate, fullLongDate]
+  date: getDateFn(), // returns [onlyNumbers, fullShortDate, fullLongDate]
   formType: 'signup',
-  isAuth: true,
+  isAuth: false,
   isMenuOpen: false,
   isOtherNoVisible: true,
   version: VERSION,

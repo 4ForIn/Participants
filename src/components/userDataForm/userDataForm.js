@@ -1,9 +1,57 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './userDataForm.module.scss';
+import { CONGREGATION, ID, NAME, NUMBER, TEXT, ZOOM_NAME } from './utils/UserDataFormStrings';
+import FormItem from './FormItem';
 
-export default function UserDataForm() {
+export default function UserDataForm({ inputValue, onChangeHandler }) {
   return (
+    <div className={styles.wrapper}>
+      <div className="section pt-2 pb-1">
+        <div className="box">
+          <FormItem
+            id={CONGREGATION}
+            label="Congregation name"
+            onChangeFn={onChangeHandler}
+            value={inputValue.congregation}
+            type={TEXT}
+            placeholder="congregation"
+          />
+
+          <FormItem
+            id={ID}
+            label="Meeting ID"
+            onChangeFn={onChangeHandler}
+            value={inputValue.id}
+            type={NUMBER}
+            placeholder="Meeting ID"
+          />
+          <FormItem
+            id={NAME}
+            label={ZOOM_NAME}
+            onChangeFn={onChangeHandler}
+            value={inputValue.name}
+            type={TEXT}
+            placeholder="Zoom name"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+UserDataForm.propTypes = {
+  inputValue: PropTypes.shape({
+    congregation: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+  }).isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+};
+
+/*
+return (
     <div className={styles.wrapper}>
       <div className="section pt-2 pb-1">
         <div className="box">
@@ -12,7 +60,7 @@ export default function UserDataForm() {
               <p>Your congregation name:</p>
             </div>
             <div>
-              <input className="input is-primary is-small" type="text" placeholder="congregation" />
+              <input className="input is-primary is-small" id={} value={} type="text" placeholder="congregation" />
             </div>
           </div>
 
@@ -32,4 +80,4 @@ export default function UserDataForm() {
       </div>
     </div>
   );
-}
+*/

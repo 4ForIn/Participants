@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AuthenticationView from 'views/authView/authenticationView';
-import ControlPanel from 'components/controlPanel/controlPanel';
-import Counter from 'components/counter/counter';
-import UserDataForm from 'components/userDataForm/userDataForm';
+import AuthenticationView from 'views/authView/';
+import AdminPanel from 'views/adminPanel';
+import UserPanel from 'views/userPanel';
 import styles from './mainView.module.scss';
 
 function MainView(props) {
@@ -12,17 +11,16 @@ function MainView(props) {
 
   const viewType = (type) => (type ? 'authView' : 'main');
 
-  const viewSettings = (isSignedIn) => ({
+  const viewMode = (isSignedIn) => ({
     authView: <AuthenticationView />,
     main: (
       <>
-        <UserDataForm />
-        <Counter />
-        {isSignedIn && <ControlPanel />}
+        <UserPanel />
+        {isSignedIn && <AdminPanel />}
       </>
     ),
   });
-  return <div className={styles.wrapper}>{viewSettings(isUserSignedIn)[viewType(isAuth)]}</div>;
+  return <div className={styles.wrapper}>{viewMode(isUserSignedIn)[viewType(isAuth)]}</div>;
 }
 
 const mapStateToProps = (state) => ({

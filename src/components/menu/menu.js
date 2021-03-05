@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { MENU_STATE } from './utils';
+import { MENU_STATE } from './utils/MenuStrings';
 import MenuAbout from './menuAbout';
 import MenuBtn from './menuBtn';
 import MenuItem from './menuItem';

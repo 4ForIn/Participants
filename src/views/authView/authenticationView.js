@@ -16,7 +16,7 @@ function AuthenticationView(props) {
     password: '',
   });
 
-  function inputOnchange(event) {
+  function handlerOnchange(event) {
     setInputValue((prevState) => ({
       ...prevState,
       [event.target.id]: event.target.value,
@@ -29,7 +29,7 @@ function AuthenticationView(props) {
           <FormInput
             id="name"
             labelText="Username:"
-            onChange={inputOnchange}
+            onChange={handlerOnchange}
             placeholder="Name"
             type="text"
             value={inputValues.name}
@@ -37,7 +37,7 @@ function AuthenticationView(props) {
           <FormInput
             id="congregation"
             labelText="Congregation:"
-            onChange={inputOnchange}
+            onChange={handlerOnchange}
             placeholder="Congregation name"
             type="text"
             value={inputValues.congregation}
@@ -47,7 +47,7 @@ function AuthenticationView(props) {
       <FormInput
         id="email"
         labelText="Email:"
-        onChange={inputOnchange}
+        onChange={handlerOnchange}
         placeholder="Email"
         type="email"
         value={inputValues.email}
@@ -55,7 +55,7 @@ function AuthenticationView(props) {
       <FormInput
         id="password"
         labelText="Password:"
-        onChange={inputOnchange}
+        onChange={handlerOnchange}
         placeholder="Password"
         type="password"
         value={inputValues.password}
