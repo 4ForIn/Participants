@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setQuantity } from 'actions/counterActions';
+import { setQuantity } from 'actions/CounterActions';
 import Button from 'components/button/primaryBtn';
 import Counter from 'components/counter/counter';
 import UserDataForm from 'components/userDataForm';

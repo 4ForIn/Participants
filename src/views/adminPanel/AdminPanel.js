@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import AddParticipantsForm from 'components/addParticipantsForm/addParticipantsForm';
-import ParticipantsList from 'components/participantsList/participantsList';
+import ParticipantsList from 'components/participantsList';
 import styles from './AdminPanel.module.scss';
 
 export default function AdminPanel() {

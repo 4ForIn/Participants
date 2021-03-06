@@ -1,29 +1,28 @@
 /* eslint-disable no-console */
 import React from 'react';
-import TableItem from './tableItem';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import TableBody from './tableBody';
+import { toArrayOfTableItems } from './utils/ToArrayOfTableItems';
 
-export default function ParticipantsList() {
-  return (
-    <table className="table table is-striped table is-fullwidth">
-      <thead>
-        <tr>
-          <th>
-            <abbr title="Pariicipant Zoom name">Name</abbr>
-          </th>
-          <th>
-            <abbr title="How many persons are listening">Quantity</abbr>
-          </th>
-
-          <th>
-            <abbr title="If needed make a correction">Correction</abbr>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <TableItem name="Veska" quantity={1} onClick={(a) => console.log(a)} />
-        <TableItem name="sem. Vos" quantity={3} onClick={(a) => console.log(a)} />
-        <TableItem name="Stefka Jivko Stanislav" quantity={4} onClick={(a) => console.log(a)} />
-      </tbody>
-    </table>
-  );
+function ParticipantsList({ data }) {
+  // returns a participants list in the form of a table - <TableBody/> with <TableItem/>s as a children
+  return <TableBody>{toArrayOfTableItems(data, (a) => console.log(a))}</TableBody>;
 }
+const mapStateToProps = (state) => ({
+  data: state.participantsList,
+});
+export default connect(mapStateToProps)(ParticipantsList);
+
+ParticipantsList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+};
+ParticipantsList.defaultProps = {
+  data: [],
+};
+
+/* 
+data is an array of participants objects
+toArrayOfTableItems is a fn, that recives array of participants objects 
+and returns <TableItem/>'s and passes by onClick fn.
+*/

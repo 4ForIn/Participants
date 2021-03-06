@@ -1,5 +1,5 @@
 export const ADD_NUMBER = 'ADD_NUMBER';
-export const DECREMENT = 'DECREMENT';
+export const CORRECT_QUANTITY = 'CORRECT_QUANTITY';
 export const INCREMENT = 'INCREMENT';
 export const IS_MODAL_OPEN = 'IS_MODAL_OPEN';
 export const IS_SIGN_IN_FORM = 'IS_SIGN_IN_FORM';

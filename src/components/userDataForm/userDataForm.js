@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './userDataForm.module.scss';
 import { CONGREGATION, ID, NAME, NUMBER, TEXT, ZOOM_NAME } from './utils/UserDataFormStrings';
-import FormItem from './FormItem';
+import FormItem from './formItem/FormItem';
 
 export default function UserDataForm({ inputValue, onChangeHandler }) {
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -53,3 +52,9 @@ Menu.propTypes = {
 Menu.defaultProps = {
   applicationVersion: '',
 };
+
+/**
+ * if user is signed in returns only Signout <MenuItem/>
+ * if user is not signed in returns Sign in and Sign up <MenuItem/>s
+ * <MenuBtn/> open/close menu's list
+ */

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AuthenticationView from 'views/authView/';
 import AdminPanel from 'views/adminPanel';
-import UserPanel from 'views/userPanel';
+import UserPanel from 'views/userPanel/UserPanel';
 import styles from './mainView.module.scss';
 
 function MainView(props) {
