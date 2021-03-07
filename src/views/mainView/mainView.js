@@ -1,26 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AuthenticationView from 'views/authView/';
-import AdminPanel from 'views/adminPanel';
-import UserPanel from 'views/userPanel/UserPanel';
-import styles from './mainView.module.scss';
+import { mainViewSwitchFn, viewType } from './utils';
+import styles from './MainView.module.scss';
 
 function MainView(props) {
   const { isAuth, isUserSignedIn } = props;
 
-  const viewType = (type) => (type ? 'authView' : 'main');
+  /**
+   * viewType is a function that recives a boolean and returns string
+   * (that is a property of the object returned by the mainViewSwitchFn function).
+   * mainViewSwitchFn it is a function instead of conditional rendering.
+   * The function takes a boolean argument and returns object with two properties,
+   * witch corresponds to the state in witch the user is logged in or out.
+   */
 
-  const viewMode = (isSignedIn) => ({
-    authView: <AuthenticationView />,
-    main: (
-      <>
-        <UserPanel />
-        {isSignedIn && <AdminPanel />}
-      </>
-    ),
-  });
-  return <div className={styles.wrapper}>{viewMode(isUserSignedIn)[viewType(isAuth)]}</div>;
+  return <div className={styles.wrapper}>{mainViewSwitchFn(isUserSignedIn)[viewType(isAuth)]}</div>;
 }
 
 const mapStateToProps = (state) => ({
@@ -37,19 +32,3 @@ MainView.defaultProps = {
   isAuth: false,
   isUserSignedIn: false,
 };
-
-/*
-return (
-    <div className={styles.wrapper}>
-      {isAuth ? (
-        <AuthenticationView />
-      ) : (
-        <>
-          <UserDataForm />
-          <Counter />
-          {isUserSignedIn && <ControlPanel />}
-        </>
-      )}
-    </div>
-  );
-*/

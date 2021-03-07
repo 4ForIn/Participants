@@ -43,11 +43,17 @@ export default function FormItem(props) {
 FormItem.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  onChangeFn: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  onChangeFn: PropTypes.func,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
 };
 FormItem.defaultProps = {
-  label: '',
+  label: 'label !',
+  placeholder: 'placeholder !',
+  onChangeFn: () => {
+    /* noop */
+  },
+  type: 'text',
+  value: '',
 };

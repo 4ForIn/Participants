@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setQuantity } from 'actions/CounterActions';
 import Button from 'components/button/primaryBtn';
-import Counter from 'components/counter/counter';
+import Counter from 'components/counter';
 import UserDataForm from 'components/userDataForm';
 import { useCounterState } from './hooks/useCounterState';
 import { useUserDataFormState } from './hooks/useUserDataFormState';

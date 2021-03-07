@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './counter.module.scss';
+import styles from './Counter.module.scss';
 
 export default function Counter({ inputChange, valueOnChange, radioValues }) {
   return (

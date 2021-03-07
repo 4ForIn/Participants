@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import AddParticipantsForm from 'components/addParticipantsForm/addParticipantsForm';
+import AddParticipantsForm from 'components/addParticipantsForm';
 import ParticipantsList from 'components/participantsList';
 import styles from './controlPanel.module.scss';
 

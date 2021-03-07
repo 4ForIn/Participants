@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './formInput.module.scss';
+import styles from './FormInput.module.scss';
 
 export default function FormInput(props) {
   const { helpMessage, id, labelText, onChange, placeholder, type, value } = props;
@@ -38,13 +38,19 @@ export default function FormInput(props) {
 FormInput.propTypes = {
   helpMessage: PropTypes.string,
   id: PropTypes.string.isRequired,
-  labelText: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
+  labelText: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  type: PropTypes.string,
   value: PropTypes.string,
 };
 FormInput.defaultProps = {
   helpMessage: '',
+  labelText: 'label !',
+  placeholder: 'placeholder !',
+  onChange: () => {
+    /* noop */
+  },
+  type: 'text',
   value: '',
 };

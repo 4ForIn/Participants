@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import FormInput from 'components/formInput/formInput';
+import FormInput from 'components/formInput';
 import Button from 'components/button/primaryBtn';
 
 function AuthenticationView(props) {
