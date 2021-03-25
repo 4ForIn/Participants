@@ -11,11 +11,7 @@ export default function TableBody({ children }) {
           </th>
           <th>
             <abbr title="How many persons are listening">Quantity</abbr>
-          </th>
-
-          <th>
-            <abbr title="If needed make a correction">Correction</abbr>
-          </th>
+          </th>          
         </tr>
       </thead>
       <tbody>{children}</tbody>
