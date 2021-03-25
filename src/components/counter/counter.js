@@ -67,23 +67,25 @@ export default function Counter({ inputChange, valueOnChange, radioValues }) {
           </label>
         </div>
 
-        <div className="mr-1 is-flex is-justify-content-space-evenly">
-          <div className="control">
-            <label htmlFor="inp">
-              <span className="tag is-primary">Other number:</span>
-              <input
-                className="input is-primary is-small"
-                id="inp"
-                type="number"
-                placeholder="other"
-                disabled={radioValues.value !== 'other'}
-                value={radioValues.otherNumber}
-                onChange={inputChange}
-                required
-              />
-            </label>
+        {radioValues.value === 'other' && (
+          <div className="mr-1 is-flex is-justify-content-space-evenly">
+            <div className="control">
+              <label htmlFor="inp">
+                <span className="tag is-primary">Other number:</span>
+                <input
+                  className="input is-primary is-small"
+                  id="inp"
+                  type="number"
+                  placeholder="other"
+                  disabled={radioValues.value !== 'other'}
+                  value={radioValues.otherNumber}
+                  onChange={inputChange}
+                  required
+                />
+              </label>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
