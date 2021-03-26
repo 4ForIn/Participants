@@ -1,5 +1,5 @@
 // first try:
-import { SET_QUANTITY } from 'utils/ActionsTypes';
+import { SET_QUANTITY } from 'actions/ActionsTypes';
 
 // counterReducer const initialState = 0;
 

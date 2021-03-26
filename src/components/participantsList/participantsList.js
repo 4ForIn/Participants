@@ -11,7 +11,7 @@ function ParticipantsList({ data }) {
   return <TableBody>{toArrayOfTableItems(data)}</TableBody>;
 }
 const mapStateToProps = (state) => ({
-  data: state.participantsList,
+  data: state.participantsList.reverse(),
 });
 export default connect(mapStateToProps)(ParticipantsList);
 

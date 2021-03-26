@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useState } from 'react';
 
 export function useCounterState() {
@@ -8,7 +7,6 @@ export function useCounterState() {
   });
 
   function onValueChange(event) {
-    // console.log(`hookprevValue: ${radioValue.value} eventV: ${event.target.value}`);
     if (event.target.value !== 'other') {
       setRadioValue((prevState) => ({
         ...prevState,
@@ -28,19 +26,10 @@ export function useCounterState() {
       otherNumber: e.target.value,
     }));
   }
-  // console.log(`hValue: ${radioValue.value}`);
+
   return {
     radioValue,
     onValueChange,
     inputOnchange,
   };
 }
-
-/* 
-function onValueChange(event) {
-    setRadioValue((prevState) => ({
-      ...prevState,
-      [event.target.id]: event.target.value,
-    }));
-  }
-*/

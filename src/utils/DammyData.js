@@ -1,8 +1,8 @@
 export const participantsObjects = [
-  { participantsQantity: 2, userId: 'dftrk2', zoomName: 'Veska' },
-  { participantsQantity: 4, userId: 'dfggrk2', zoomName: 'sem. Vos' },
-  { participantsQantity: 3, userId: 'dftriii4', zoomName: 'Stefka Jivko Stanislav' },
-  { participantsQantity: 2, userId: 'dftrk7', zoomName: 'Veska' },
-  { participantsQantity: 2, userId: 'klomnhh87.9.99', zoomName: 'nedko i veska144000' },
-  { participantsQantity: 1, userId: 'ddgg66.7.77', zoomName: 'atanaska ancheva ncjrnnnvrejn' },
+  { participantsQuantity: 2, userId: 'jarek_parca2114:94:ET', zoomName: 'Veska' },
+  { participantsQuantity: 4, userId: 'j2114:34:ET', zoomName: 'sem. Komit' },
+  { participantsQuantity: 3, userId: 'jaek_parca20711:ET', zoomName: 'Mike & Stive' },
+  { participantsQuantity: 2, userId: 'jk_par14:34:ET', zoomName: 'Krisi' },
+  { participantsQuantity: 2, userId: 'rek_parc02114:04:ET', zoomName: 'Nokia0004' },
+  { participantsQuantity: 1, userId: 'jak_parc14:34:ET', zoomName: 'HTC30i' },
 ];

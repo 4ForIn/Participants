@@ -1,4 +1,4 @@
-import { ADD_PARTICIPANT } from 'utils/ActionsTypes';
+import { ADD_PARTICIPANT } from 'actions/ActionsTypes';
 /**
  * participantsListReducer; const initialState = [];
  * participant object =

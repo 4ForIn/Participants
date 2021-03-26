@@ -2,29 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addParticipant } from 'actions/ParticipantsListActions';
 import PropTypes from 'prop-types';
-import AddParticipantsForm from 'components/quantityCorrection';
+import QuantityCorrection from 'components/quantityCorrection';
 import ParticipantsList from 'components/participantsList';
+import { countParticipants } from './utils/CountParticipants';
 import styles from './AdminPanel.module.scss';
 
 function AdminPanel(props) {
   const { quantity, someFn } = props;
-  
+
   return (
     <div className={styles.wrapper}>
       <div className="py-0 mx-2 column is-flex is-flex-direction-column">
         <ParticipantsList />
-        <AddParticipantsForm number={quantity} fakeProp={someFn}/>
+        <QuantityCorrection number={quantity} fakeProp={someFn} />
       </div>
     </div>
   );
 }
 const mapDispatchToProps = (dispatch) => ({
-  // dispatching plain actions
   someFn: (a) => dispatch(addParticipant(a)),
 });
 
 const mapStateToProps = (state) => ({
-  quantity: state.participantsList.length,
+  quantity: countParticipants(state.participantsList),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AdminPanel);
 

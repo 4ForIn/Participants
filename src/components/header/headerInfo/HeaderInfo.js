@@ -15,6 +15,6 @@ HeaderInfo.propTypes = {
   date: PropTypes.string,
 };
 HeaderInfo.defaultProps = {
-  userName: 'You are not signed in',
+  userName: '😍',
   date: 'very nice day 👍',
 };

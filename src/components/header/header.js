@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,15 +16,17 @@ function Header({ headerDate, userName }) {
     </section>
   );
 }
-Header.propTypes = {
-  headerDate: PropTypes.arrayOf(PropTypes.string).isRequired,
-  userName: PropTypes.string,
-};
 const mapStateToProps = (state) => ({
   headerDate: state.appState.date,
+  userName: state.user.name,
 });
+Header.propTypes = {
+  headerDate: PropTypes.arrayOf(PropTypes.string),
+  userName: PropTypes.string,
+};
 Header.defaultProps = {
-  userName: 'You are not signed in',
+  headerDate: ['we dont no 🙄'],
+  userName: '😍',
 };
 
 export default connect(mapStateToProps)(Header);

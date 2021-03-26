@@ -1,4 +1,4 @@
-import { SET_QUANTITY } from 'utils/ActionsTypes';
+import { SET_QUANTITY } from 'actions/ActionsTypes';
 
 const initialState = 0;
 

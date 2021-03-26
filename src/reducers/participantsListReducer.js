@@ -1,14 +1,15 @@
 import { participantsObjects } from 'utils/DammyData';
-import { ADD_PARTICIPANT } from 'utils/ActionsTypes';
+import { ADD_PARTICIPANT } from 'actions/ActionsTypes';
 
 // const initialState = [];
 
 export default function participantsListReducer(state = participantsObjects, action) {
-  switch (action.type) {
+  const { payload, type } = action;
+  switch (type) {
     case ADD_PARTICIPANT:
-      return [...state, action.payload];
+      return [...state, payload];
     case 'ADD_FAKE':
-      return [...state, action.payload];
+      return [...state, payload];
     default:
       return state;
   }

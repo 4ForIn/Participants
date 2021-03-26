@@ -6,7 +6,7 @@ export default function TableItem({ name, quantity }) {
   return (
     <tr>
       <td>{name}</td>
-      <td className='pl-5'>{quantity}</td>      
+      <td className="pl-5">{quantity}</td>
     </tr>
   );
 }
@@ -14,9 +14,8 @@ export default function TableItem({ name, quantity }) {
 TableItem.propTypes = {
   name: PropTypes.string,
   quantity: PropTypes.number,
-  
 };
 TableItem.defaultProps = {
   name: 'No name :(',
-  quantity: 1,  
+  quantity: -2,
 };
