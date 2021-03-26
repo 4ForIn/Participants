@@ -3,33 +3,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setQuantity } from 'actions/CounterActions';
+// import { setQuantity } from 'actions/CounterActions';
+import { fakeAddPartic } from 'actions/ParticipantsListActions';
 import Button from 'components/button/primaryBtn';
 import Counter from 'components/counter';
 import UserDataForm from 'components/userDataForm';
+import { makeUserId, resetForminputs } from './utils/handleBtn/handleBtn';
 import { useCounterState } from './hooks/useCounterState';
 import { useUserDataFormState } from './hooks/useUserDataFormState';
 
 function UserPanel(props) {
   const { setParticipantsNumber } = props;
   const { radioValue, onValueChange, inputOnchange } = useCounterState();
-  const { inputValues, handlerOnchange } = useUserDataFormState();
+  const { inputValues, handlerOnchange, setInputValue } = useUserDataFormState();
+
+  function agregateUserInfo(congregation, meetingId, participantsQuantity, zoomName) {
+    const userInfo = {
+      congregation,
+      isSignedIn: false,
+      meetingId,
+      name: '',
+      participantsQuantity,
+      userId: makeUserId(zoomName),
+      zoomName,
+    };
+    resetForminputs(setInputValue);
+    return userInfo;
+  }
 
   return (
     <>
       <UserDataForm inputValue={inputValues} onChangeHandler={handlerOnchange} />
-      <Counter
-        btnOnClick={(b) => setParticipantsNumber(b)}
-        inputChange={inputOnchange}
-        valueOnChange={onValueChange}
-        radioValues={radioValue}
-      />
+      <Counter inputChange={inputOnchange} valueOnChange={onValueChange} radioValues={radioValue} />
       <div className="is-flex is-justify-content-center">
         <Button
-          btnType="button"
+          btnType="submit"
           color="button is-warning"
           handleOnClick={() =>
-            console.log(parseInt(radioValue.value, 10) || parseInt(radioValue.otherNumber, 10))
+            setParticipantsNumber(
+              agregateUserInfo(
+                inputValues.congregation,
+                inputValues.id,
+                parseInt(radioValue.value, 10) || parseInt(radioValue.otherNumber, 10),
+                inputValues.name || 'krowka',
+              ),
+            )
           }
         >
           <>Submit</>
@@ -41,7 +59,7 @@ function UserPanel(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   // dispatching plain actions
-  setParticipantsNumber: (a) => dispatch(setQuantity(a)),
+  setParticipantsNumber: (a) => dispatch(fakeAddPartic(a)),
 });
 
 export default connect(null, mapDispatchToProps)(UserPanel);
@@ -56,30 +74,8 @@ UserPanel.defaultProps = {
 };
 
 /* 
-const [inputValues, setInputValue] = useState({
-    congregation: '',
-    id: '',
-    name: '',
-  });
 
-  function handlerOnchange(event) {
-    setInputValue((prevState) => ({
-      ...prevState,
-      [event.target.id]: event.target.value,
-    }));
-  }
-import PropTypes from 'prop-types';
-
-  UserPanel.propTypes = {
-  isAuth: PropTypes.bool,
-  isUserSignedIn: PropTypes.bool,
-};
-UserPanel.defaultProps = {
-  isAuth: false,
-  isUserSignedIn: false,
-};
-const mapStateToProps = (state) => ({
-  isAuth: state.appState.isAuth,
-  isUserSignedIn: state.user.isSignedIn,
-});
+handleOnClick={() =>
+            console.log(parseInt(radioValue.value, 10) || parseInt(radioValue.otherNumber, 10))
+          }
 */

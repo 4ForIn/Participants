@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/button/primaryBtn';
 
-export default function AddParticipantsForm({number, handleBtn}) {
+export default function QuantityCorrection({number, handleBtn}) {
   const [inputValue, setInputValue] = useState(0)
   return (
     <>
@@ -34,12 +34,12 @@ export default function AddParticipantsForm({number, handleBtn}) {
   );
 }
 
-AddParticipantsForm.propTypes = {
+QuantityCorrection.propTypes = {
   number: PropTypes.number,
   handleBtn: PropTypes.func,
 };
   
-AddParticipantsForm.defaultProps = {
+QuantityCorrection.defaultProps = {
   number: 0,
   // eslint-disable-next-line no-console
   handleBtn: () => {console.log('AddParticipantsForm expect onClick');}

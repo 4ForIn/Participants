@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import AddParticipantsForm from 'components/addParticipantsForm';
+import QuantityCorrection from 'components/quantityCorrection';
 import ParticipantsList from 'components/participantsList';
 import styles from './controlPanel.module.scss';
 
@@ -10,7 +10,7 @@ export default function ControlPanel() {
     <div className={styles.wrapper}>
       <div className="py-0 mx-2 column is-flex is-flex-direction-column">
         <ParticipantsList />
-        <AddParticipantsForm />
+        <QuantityCorrection />
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ export default function ControlPanel() {
 div className={styles.wrapper}>
       <div className="py-0 mx-2 column is-flex is-flex-direction-column is-align-items-center">
         <ParticipantsList />
-        <AddParticipantsForm />
+        <QuantityCorrection />
         <p>
           All meeting participants number: <span>17</span>
         </p>

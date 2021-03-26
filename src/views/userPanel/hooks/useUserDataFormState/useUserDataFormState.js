@@ -16,5 +16,6 @@ export function useUserDataFormState() {
   return {
     inputValues,
     handlerOnchange,
+    setInputValue,
   };
 }

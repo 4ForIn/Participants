@@ -7,7 +7,8 @@ import { toArrayOfTableItems } from './utils/ToArrayOfTableItems';
 
 function ParticipantsList({ data }) {
   // returns a participants list in the form of a table - <TableBody/> with <TableItem/>s as a children
-  return <TableBody>{toArrayOfTableItems(data, (a) => console.log(a))}</TableBody>;
+
+  return <TableBody>{toArrayOfTableItems(data)}</TableBody>;
 }
 const mapStateToProps = (state) => ({
   data: state.participantsList,

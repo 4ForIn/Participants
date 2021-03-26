@@ -2,15 +2,9 @@ import React from 'react';
 import TableItem from '../tableItem';
 
 // fn that recives array of participants objects and returns array of <TableItem/>s
-// and passes by onClick fn.
-export const toArrayOfTableItems = (data1, correctFn) => {
+export const toArrayOfTableItems = (data1) => {
   const arrayOfTableItems = data1.map((item) => (
-    <TableItem
-      key={item.userId}
-      name={item.zoomName}
-      quantity={item.participantsQantity}
-      handleOnClick={correctFn}
-    />
+    <TableItem key={item.userId} name={item.zoomName} quantity={item.participantsQuantity} />
   ));
   return arrayOfTableItems;
 };
