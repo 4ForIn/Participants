@@ -9,7 +9,7 @@ import styles from 'App.module.scss';
 function App() {
   return (
     <Provider store={appStore}>
-      <div className={styles.app}>
+      <div className={styles.app} data-testid="app-div">
         <Header />
         <MainView />
         <Footer />

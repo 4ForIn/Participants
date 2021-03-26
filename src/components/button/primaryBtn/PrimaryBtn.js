@@ -7,6 +7,7 @@ export default function Button({ btnType, handleOnClick, children, color }) {
       className={color}
       type={btnType === 'submit' ? 'submit' : 'button'}
       onClick={() => handleOnClick()}
+      data-testid="primaryBtn"
     >
       {children}
     </button>
