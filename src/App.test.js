@@ -26,8 +26,8 @@ describe('Main App component', () => {
     // console.log(appDivClass.innerHTML);
     ReactDOM.unmountComponentAtNode(div);
   });
-  it('renders button node', () => {
+  it('renders wrapping div', () => {
     const { getByTestId } = render(<App />);
-    expect(getByTestId('app-div')).toBeInTheDocument();
+    expect(getByTestId('app-wrapping-div')).toBeInTheDocument();
   });
 });
