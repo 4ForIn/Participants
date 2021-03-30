@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
-import { queries, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import PrimaryBtn from './PrimaryBtn';
 
 describe('PrimaryBtn component', () => {
