@@ -9,7 +9,7 @@ export default function FormItem(props) {
     <>
       {label === ZOOM_NAME ? (
         <div className="mx-4 px-3">
-          <label className="tag is-primary">{`${label}:`}</label>
+          <label htmlFor={id} className="tag is-primary">{`${label}:`}</label>
           <input
             className={INPUT_CLASS}
             id={id}
@@ -22,7 +22,7 @@ export default function FormItem(props) {
       ) : (
         <div className="block is-flex align-items is-justify-content-space-between mx-3">
           <div>
-            <p>{label}:</p>
+            <label htmlFor={id}>{label}:</label>
           </div>
           <div>
             <input
