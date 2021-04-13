@@ -1,5 +1,4 @@
 import * as types from 'actions/ActionsTypes';
-// import { participantsObjects } from 'utils/DammyData';
 import reducer from '../participantsListReducer';
 
 const newParticipant = {
