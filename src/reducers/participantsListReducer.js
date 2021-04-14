@@ -1,8 +1,6 @@
 import { participantsObjects } from 'utils/DammyData';
 import { ADD_PARTICIPANT } from 'actions/ActionsTypes';
 
-// const initialState = [];
-
 export default function participantsListReducer(state = participantsObjects, action) {
   const { payload, type } = action;
   switch (type) {
@@ -16,6 +14,7 @@ export default function participantsListReducer(state = participantsObjects, act
 }
 
 /**
+ * const initialState = [];
  * participant object =
  * {congregation: '', isSignedIn: bool, meetingId: '', name: '', participantsQuantity: 1, userId: '', zoomName: ''}
  */

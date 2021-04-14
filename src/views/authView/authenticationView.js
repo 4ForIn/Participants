@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 import { tryToSignIn, tryToSignUp } from 'actions/UserActions';
@@ -10,29 +9,16 @@ import { useHandleFormState } from './hooks/useHandleFormState/UseHandleFormStat
 import { useIsLoadingState } from './hooks/useLoadingState/UseLoadingState';
 
 function AuthenticationView(props) {
-  const { auth, formType, isUserSignedIn, signIn, swithForm, userId } = props;
-  const { inputValues, handlerOnchange, handleOnSubmit } = useHandleFormState();
+  const { auth, formType, signIn, swithForm } = props;
+  const { inputValues, handlerOnchange } = useHandleFormState();
   const { isLoading, triggerIsLoading } = useIsLoadingState();
-
-  /* const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    triggerIsLoading(true);
-    await handleOnSubmit(formType === 'signin' ? signIn : auth).then((createdUser) => {
-      // console.log(isSignedSuccesfull);
-      if (createdUser) {
-        triggerIsLoading(false);
-      }
-    });
-  }; */
 
   const submitForm = (event) => {
     event.preventDefault();
     triggerIsLoading(true);
     if (formType === 'signup') {
-      console.log(inputValues.email);
       auth(inputValues);
     } else signIn(inputValues);
-    console.log(inputValues.email);
     triggerIsLoading(false);
   };
 
@@ -106,22 +92,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(AuthenticationView);
 AuthenticationView.propTypes = {
   auth: PropTypes.func,
   formType: PropTypes.oneOf(['signin', 'signup']),
-  isUserSignedIn: PropTypes.bool,
   signIn: PropTypes.func,
   swithForm: PropTypes.func,
-  userId: PropTypes.string,
 };
 AuthenticationView.defaultProps = {
   auth: (f) => f,
   formType: 'signin',
-  isUserSignedIn: false,
   signIn: (f) => f,
   swithForm: () => {
     /* noop */
   },
-  userId: '',
 };
-
-/*
-
-*/

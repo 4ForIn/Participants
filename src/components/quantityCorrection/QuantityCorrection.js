@@ -55,9 +55,5 @@ QuantityCorrection.propTypes = {
 
 QuantityCorrection.defaultProps = {
   number: 0,
-
-  handleBtn: () => {
-    // eslint-disable-next-line no-console
-    console.log('AddParticipantsForm expect onClick');
-  },
+  handleBtn: (f) => f,
 };

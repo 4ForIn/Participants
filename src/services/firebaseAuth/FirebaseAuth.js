@@ -1,19 +1,6 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/Firebase';
 
-/* auth.onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in.
-    console.log(user);
-  } else {
-    // No user is signed in.
-    console.log(user);
-    // eslint-disable-next-line no-alert
-    alert('You are signed out');
-  }
-  return user;
-}); */
-
 const updateUserName = async (user, name) => {
   try {
     await user.updateProfile({
@@ -31,7 +18,6 @@ export const signUpWithEmailAndPassAndName = async (email, password, name) => {
     currentUser = auth.currentUser;
     await updateUserName(currentUser, name);
   } catch (error) {
-    // An error happened.
     console.log(error.message);
     currentUser = null;
   }
@@ -47,7 +33,6 @@ export const signInWithEmailAndPass = async (email, password) => {
       res = r;
     })
     .catch((error) => {
-      // An error happened.
       console.log(error.message);
       res = error;
     });
@@ -58,11 +43,9 @@ export const signOut = async () => {
   await auth
     .signOut()
     .then(() => {
-      // Sign-out successful.
       console.log('Sign-out successful');
     })
     .catch((error) => {
-      // An error happened.
       console.log(error.message);
     });
 };
@@ -81,13 +64,4 @@ user object:
   uid: null,
   zoomName: null,
 }
-
-------------------
-firebase.auth().currentUser.getIdToken( \/*forceRefresh \* true).then(function(idToken) {
-  // Send token to your backend via HTTPS
-  // ...
-}).catch(function(error) {
-  // Handle error
-});
-
 */

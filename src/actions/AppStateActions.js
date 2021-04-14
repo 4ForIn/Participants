@@ -11,8 +11,6 @@ export const switchSignUpForm = () => ({
   type: AUTH_FORM_SIGNUP,
 });
 /*
-isAuth to replace with checking userReducer.isSignedIn only!
-
   {
   date: getDateFn(), // returns [onlyNumbers, fullShortDate, fullLongDate]
   formType: 'signup',

@@ -5,7 +5,7 @@ import { VERSION } from 'utils/ApplicationVersion';
 const initialState = {
   date: getDateFn(), // returns [onlyNumbers, fullShortDate, fullLongDate]
   formType: 'signin',
-  isAuth: false, // isAuth to replace with checking userReducer.isSignedIn only!
+  isAuth: false,
   isMenuOpen: false,
   isOtherNoVisible: true,
   version: VERSION,

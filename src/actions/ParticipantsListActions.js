@@ -1,8 +1,6 @@
 import { ADD_PARTICIPANT } from 'actions/ActionsTypes';
 /**
  * participantsListReducer; const initialState = [];
- * participant object =
- * {congregation: '', isSignedIn: bool, meetingId: '', name: '', participantsQuantity: 1, userId: '', zoomName: ''}
  */
 
 export const addParticipant = (participant) => ({

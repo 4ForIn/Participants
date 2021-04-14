@@ -13,7 +13,7 @@ const appStore = createStore(
   composeEnhancers(compose(applyMiddleware(...middlewares))),
 );
 
-// Firebase listener, modifying state depend user is signed in.
+// Firebase listener, modifying state depend on user is signed in or not.
 auth.onAuthStateChanged((user) => {
   if (user?.uid) {
     const currentUser = {
@@ -32,15 +32,3 @@ auth.onAuthStateChanged((user) => {
 });
 
 export default appStore;
-
-/* without applyMiddleware(thunk):
-const appStore = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),  
-);
-
-export default appStore;
-
------------------------
-const appStore = createStore(rootReducer, composeEnhancers(compose(applyMiddleware(thunk))));
-*/
