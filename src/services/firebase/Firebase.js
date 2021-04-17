@@ -11,7 +11,21 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
+const firestoreSettings = { timestampsInSnapshots: true };
 
 firebase.initializeApp(firebaseConfig);
+const db1 = firebase.firestore();
+db1.settings(firestoreSettings);
 export const auth = firebase.auth();
-export const db = firebase.firestore();
+export const db = db1;
+
+/*
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firestoreDb = firebase.firestore();
+
+....
+const firestoreSettings = { timestampsInSnapshots: true };
+export const db = firestoreDb.settings(firestoreSettings);
+
+*/

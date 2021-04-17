@@ -1,40 +1,31 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getDateFn } from 'utils/GetDateFn';
-import { fakeAddPartic } from 'actions/ParticipantsListActions';
-import { setUserProperties } from 'actions/UserActions';
 import Button from 'components/button/primaryBtn';
 import Counter from 'components/counter';
 import UserDataForm from 'components/userDataForm';
+import { submitUserDataFormAction } from 'actions/CounterActions';
 import { resetForminputs } from './utils/resetFormInputs/ResetFormInputs';
 import { useCounterState } from './hooks/useCounterState';
 import { useUserDataFormState } from './hooks/useUserDataFormState';
 
 function UserPanel(props) {
-  const { setParticipantsNumber, setUserProps } = props;
+  const { submitUserDataForm, userIdFromApp } = props;
   const { radioValue, onValueChange, inputOnchange } = useCounterState();
   const { inputValues, handlerOnchange, setInputValue } = useUserDataFormState();
 
-  function handelBtnOnClick(congregation, meetingId, participantsQuantity, zoomName) {
-    const userInfo = {
-      congregation,
-      isSignedIn: false,
-      meetingId,
-      participantsQuantity,
-      userId: getDateFn()[2].replace(/\s+/g, ''),
-      zoomName,
+  function handelBtnOnClick(event) {
+    event.preventDefault();
+    const data = {
+      congregation: inputValues.congregation,
+      meetingId: inputValues.id,
+      participantsQuantity: parseInt(radioValue.value, 10) || parseInt(radioValue.otherNumber, 10),
+      userId: userIdFromApp,
+      zoomName: inputValues?.name || 'No name :(',
     };
-    // if user is not signed in let set zoomName in Header - "Hello zoomName"
-    setUserProps({
-      congregation: userInfo?.congregation,
-      name: userInfo?.zoomName,
-      meetingId: userInfo?.meetingId,
-      participantsQuantity: userInfo?.participantsQuantity,
-      zoomName: userInfo?.zoomName,
-    });
+    submitUserDataForm(data);
     resetForminputs(setInputValue);
-    return userInfo;
   }
 
   return (
@@ -45,16 +36,7 @@ function UserPanel(props) {
         <Button
           btnType="submit"
           color="button is-warning"
-          handleOnClick={() =>
-            setParticipantsNumber(
-              handelBtnOnClick(
-                inputValues.congregation,
-                inputValues.id,
-                parseInt(radioValue.value, 10) || parseInt(radioValue.otherNumber, 10),
-                inputValues.name || 'No name :(',
-              ),
-            )
-          }
+          handleOnClick={(e) => handelBtnOnClick(e)}
         >
           <>Submit</>
         </Button>
@@ -63,22 +45,23 @@ function UserPanel(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setParticipantsNumber: (a) => dispatch(fakeAddPartic(a)),
-  setUserProps: (a) => dispatch(setUserProperties(a)),
+const mapStateToProps = (state) => ({
+  userIdFromApp: state.user.userId,
 });
 
-export default connect(null, mapDispatchToProps)(UserPanel);
+const mapDispatchToProps = (dispatch) => ({
+  submitUserDataForm: (a) => dispatch(submitUserDataFormAction(a)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPanel);
 
 UserPanel.propTypes = {
-  setParticipantsNumber: PropTypes.func,
-  setUserProps: PropTypes.func,
+  submitUserDataForm: PropTypes.func,
+  userIdFromApp: PropTypes.string,
 };
 UserPanel.defaultProps = {
-  setParticipantsNumber: () => {
+  submitUserDataForm: () => {
     /* noop */
   },
-  setUserProps: () => {
-    /* noop */
-  },
+  userIdFromApp: 'FakeUserIdFromApp',
 };

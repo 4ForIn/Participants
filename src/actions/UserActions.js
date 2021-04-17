@@ -17,12 +17,6 @@ import {
   signUpWithEmailAndPassAndName,
 } from 'services/firebaseAuth/FirebaseAuth';
 
-let currentUser = {
-  email: '',
-  idToken: '',
-  isSignedIn: false,
-  name: null,
-};
 const blankUser = {
   congregation: null,
   email: null,
@@ -42,24 +36,18 @@ export const setUserProperties = (userProps) => ({
 
 export const setUserIsSignedIn = (user) => ({
   type: USER_IS_SIGNED_IN,
-  payload: {
-    email: user.email,
-    isSignedIn: true,
-    name: user.displayName,
-  },
+  payload: user,
 });
 
 export const setUserIsSignedOut = () => ({
   type: USER_IS_SIGNED_OUT,
-  payload: false,
+  payload: blankUser,
 });
 
 export const tryToSignUp = (inputs) => (dispatch) => {
   dispatch({ type: SIGN_UP_REQUEST });
   return signUpWithEmailAndPassAndName(inputs.email, inputs.password, inputs.name)
-    .then(({ email, idToken, displayName, uid }) => {
-      currentUser = { email, idToken, isSignedIn: true, name: displayName, uid };
-      dispatch({ type: USER_IS_SIGNED_IN, payload: currentUser });
+    .then(() => {
       dispatch({ type: AUTH_VIEW_MODE, payload: false });
     })
     .catch((err) => {
@@ -69,16 +57,10 @@ export const tryToSignUp = (inputs) => (dispatch) => {
 };
 
 export const tryToSignIn = (inputs) => async (dispatch) => {
-  console.log(inputs.email);
   dispatch({ type: SIGN_IN_REQUEST });
   try {
-    const res = await signInWithEmailAndPass(inputs.email, inputs.password);
-    // console.log(res);
-    const {
-      user: { email, idToken, displayName, uid },
-    } = res;
-    currentUser = { email, idToken, isSignedIn: true, name: displayName, uid };
-    dispatch({ type: USER_IS_SIGNED_IN, payload: currentUser });
+    await signInWithEmailAndPass(inputs.email, inputs.password);
+
     dispatch({ type: AUTH_VIEW_MODE, payload: false });
   } catch (err) {
     console.log(err);
@@ -90,13 +72,13 @@ export const tryToSignOut = () => (dispatch) => {
   dispatch({ type: SIGN_OUT_REQUEST });
   return signOut()
     .then(() => {
-      dispatch({ type: USER_IS_SIGNED_OUT, payload: blankUser });
       dispatch({ type: AUTH_VIEW_MODE, payload: false });
     })
     .catch((err) => {
       console.log(err);
       dispatch({ type: SIGN_OUT_FAIL });
-    });
+    })
+    .finally(() => setUserIsSignedOut());
 };
 
 /*
@@ -113,4 +95,5 @@ userProps are some of these properies:
   uid: null,
   zoomName: null,
 }
+
  */

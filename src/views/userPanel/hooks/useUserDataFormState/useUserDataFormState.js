@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useState } from 'react';
 
 export function useUserDataFormState() {
@@ -8,6 +9,7 @@ export function useUserDataFormState() {
   });
 
   function handlerOnchange(event) {
+    console.log(event.target.value);
     setInputValue((prevState) => ({
       ...prevState,
       [event.target.id]: event.target.value,

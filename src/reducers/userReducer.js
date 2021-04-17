@@ -23,7 +23,6 @@ export default function userReducer(state = initialState, action) {
     case USER_IS_SIGNED_IN:
       return { ...state, ...payload };
     case USER_IS_SIGNED_OUT:
-      // payload is an object with some or all user (initialState) properties
       return { ...state, ...payload };
 
     default:

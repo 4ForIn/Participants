@@ -20,6 +20,7 @@ auth.onAuthStateChanged((user) => {
       email: user.email,
       name: user.displayName,
       idToken: user.idToken,
+      isSignedIn: true,
       uid: user.uid,
     };
     // User is signed in.
